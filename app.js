@@ -10,6 +10,6 @@ app.get('/',(req,res) => {
  
  
 app.listen(port, () => {
-    console.log('this app running on port ' + port)
+    console.log('this app listening on port ' + port)
 })
 
