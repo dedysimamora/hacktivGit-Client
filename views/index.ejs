@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <title>HacktivGit</title>
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0076ca;">
+        <a class="navbar-brand" href="#">HacktivGit</a>
+        <a id="logoHome" onclick="normalContent()"class="navbar-brand" href="#"><i class="fas fa-home"></i></a>
+        <a id="logout" onclick="logout()"class="navbar-brand" href="#">Logout</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a id="starredRepo" onclick="starredRepo()" class="nav-link" href="#">Starred Repo
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                        <a id="createNewRepo" onclick="GenerateNewRepoForm()" class="nav-link" href="#">Create New Repo
+                            <span class="sr-only">(current)</span></a>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- end navbar -->
+
+    <section id="allContent" style="margin-top : 20px">
+        <div class="container">
+            <div class="row" id="loginForm" style="margin-top : 100px">
+                <div class="col-md-4 offset-md-4">
+                    <div class="card bg-light mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <form onsubmit="login()">
+                                <h3>LOGIN</h3>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="username" aria-describedby="emailHelp"
+                                        placeholder="username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Log In</button>
+                                <a onclick="GenerateRegisterForm()" href="#">Register</a>
+                                <div id="errMsg"></div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="contentArea">
+                <div class="col-md-3">
+                    <form>
+                        <div class="form-row align-items-center">
+
+                            <div class="col-auto" style="width: auto">
+                                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fas fa-search"></i></span></div>
+                                    </div>
+                                    <input onchange="cari($(this))" type="text" class="form-control"
+                                        id="inlineFormInputGroup" placeholder="Search user">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="listUsername" class="list-group">
+                        <a href="#" onclick="showRepo('noviirna')"
+                            class="list-group-item list-group-item-action">Noviirna</a>
+                        <a href="#" onclick="showRepo('Yudawardana94')"
+                            class="list-group-item list-group-item-action">Yuda wardana</a>
+                        <a href="#" onclick="showRepo('dinulsyah')" class="list-group-item list-group-item-action">Arif
+                            Dinul</a>
+                        <a href="#" onclick="showRepo('eliavictor')" class="list-group-item list-group-item-action">Elia
+                            Victor</a>
+                        <a href="#" onclick="showRepo('anameilani')" class="list-group-item list-group-item-action">Ana
+                            Meilani</a>
+                        <a href="#" onclick="showRepo('rudyfebrianthomas')"
+                            class="list-group-item list-group-item-action">Rudy Febrian</a>
+                        <a href="#" onclick="showRepo('nvtrakhmawati')"
+                            class="list-group-item list-group-item-action">Novi Rachmawati</a>
+                        <a href="#" onclick="showRepo('emji-MG')" class="list-group-item list-group-item-action">Mikel
+                            Gunawan</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <form style="width:100%;">
+                            <div class="form-row align-items-center">
+                                <div class="" style="width:100%">
+                                    <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-search"></i></span></div>
+                                        </div>
+                                        <input type="text" class="form-control" id="inlineFormInputGroup"
+                                            placeholder="Search Repo">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="repoContent" class="row card-columns">
+                        <div class="row" id="repoDiv">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+    </section>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
